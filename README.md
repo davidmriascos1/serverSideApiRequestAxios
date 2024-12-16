@@ -13,7 +13,9 @@ This project is part of my learning journey in Angela Yu’s Full-Stack Web Deve
 - EJS (Embedded JavaScript for templates)
 - Axios (HTTP client for API requests)
 - CSS for styling
+  
  🧩 How It Works
+ 
 	1.	Random Activity on Page Load:
 - When you visit the homepage, the app makes an API request to get a random activity using Axios.
 - The activity is displayed dynamically using an EJS template.
