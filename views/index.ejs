@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- This sets the character encoding to UTF-8 -->
+  <meta charset="UTF-8">
+  <!-- Ensures the webpage is responsive for all devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link to the external CSS file for styling -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- Title of the webpage displayed in the browser tab -->
+  <title>I'm Bored</title>
+</head>
+
+<body>
+  <!-- Main container that holds all content -->
+  <div class="container">
+    <!-- Page title -->
+    <h1>Let's find something for you to do ✌️</h1>
+
+    <!-- Form to submit user input to the server -->
+    <form action="/" id="form" class="form" method="POST">
+      <!-- Dropdown menu for selecting the type of activity -->
+      <select name="type" class="form-select">
+        <option value="" data-display="Select">Random type</option>
+        <option value="education">Education</option>
+        <option value="charity">Charity</option>
+        <option value="recreational">Recreational</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="busywork">Busywork</option>
+        <option value="social">Social</option>
+        <option value="diy">DIY</option>
+        <option value="music">Music</option>
+      </select>
+
+      <!-- Dropdown menu for selecting the number of participants -->
+      <select name="participants" class="form-select">
+        <option value="">Any number of people</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
+      <!-- Submit button to send the form data to the server -->
+      <button type="submit" class="form-submit">Go</button>
+    </form>
+
+    <!-- Section to display the results or error message -->
+    <section id="cards" class="cards">
+      <!-- Check if the server sent activity data -->
+      <% if (locals.data) { %>
+        <!-- Display the activity in a card -->
+        <article class="card-item">
+          <h2 class="card-activity">
+            <!-- Display the name of the activity -->
+            <%= data.activity %>
+          </h2>
+          <div class="card-info">
+            <!-- Display the type of the activity -->
+            <span class="card-type">
+              <%= data.type %>
+            </span>
+            <!-- Display the number of participants -->
+            <span class="card-participants">
+              participants: <%= data.participants %>
+            </span>
+          </div>
+        </article>
+      <% } %>
+
+      <!-- Check if there is an error message to display -->
+      <% if (locals.error) { %>
+        <div id="tag-error" class="tag-error">
+          <!-- Display the error message -->
+          <%= error %>
+        </div>
+      <% } %>
+    </section>
+  </div>
+</body>
+
+</html>
